@@ -94,6 +94,41 @@
 So thank you for coming today. I'll try to make it worth your time, or barring that, at least give you some things to think about.
 
 
+### [need a title]
+
+I didn't know what this talk would be about until last Thursday. Thankfully I was busy morning to night, and didn't have blocks of time to sit down and start writing. With a little distance, the ideas were flooding in.
+
+One thing I knew for sure is that I didn't want to come in and just do some kind of technical demo. I dig technology, but don't fetishize it. It's a means to an end, and the end is what matters.
+
+Beyond that, though, you guys have given me the gift of your time. So I feel it's important to give something back. I'd like to give you some insight into how I'd approach work, to help you decide if we're compatible. After that, for sure we'll do a demo. We live in **amazing times**. Things are accelerating in the DevOps space the past few years. For a lifelong learner, it's so gratifying. So I'll demo some stuff I've been learning over the past couple weeks.
+
+
+~~The end for me always includes the people. Delivering the bits is a collaborative effort, and delivering a second time is ...~~
+
+
+### Values (not inclusive)
+
+I like things that are:
+
+* stable
+* reliable
+* predictable
+
+With respect to software development and deployment, these features are also valuable:
+
+* hands-free
+* fast
+* flexible: rollback-able (keeping options open)
+* flexible: blue-green
+ * carve off some fraction of servers for live testing
+* visible
+ * reporting, monitoring
+* trending towards complete (as far as possible)
+ * tracking versions, understanding dependencies, it's kind of an open question / issue
+* supportable [TODO get rid of the "able's"]
+* testable [TODO ditto]
+
+
 ### Broadening the notion of SDLC
 
 * The software development lifecycle is
@@ -107,6 +142,8 @@ So thank you for coming today. I'll try to make it worth your time, or barring t
 
 ### A confession [need a new title]
 **NO SELF-DEPRECATION. PERIOD.**
+
+* [aside] "look at everything we didn't have to build" <-- MapBox CEO at re:Invent during Werner's keynote (so awesome)
 
 * I tend to view applications as black boxes, aside from whatever configuration is needed. I and my team need to focus on creating and maintaining source to create the cattle on which their applications will run.
 
@@ -122,6 +159,8 @@ Thankfully, this "practices gap" is closing. More services and operations staff 
  * Let's evolve a culture of "socializing"
 * Let's reduce "buyer's remorse" by keeping in mind that we'll review our choices, and pivot as needed **based on experience in context**.
  * At the same time, let's agree that if our preferred technology or tool didn't make the cut, that we'll do another review in the future.
+
+* Let's focus on the second (or third or ...) deployment. That's where you find out if you've got the right abstractions and change management features in place.
 
 * It's all about velocity.
  * 4x lanes v. 1. Some kind of visual here. Don't take it too far, though, because water thru a pipe (for example) is **a lot** less complex than managing the full dev+deployment lifecycle.
