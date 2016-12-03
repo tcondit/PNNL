@@ -68,7 +68,8 @@
  * service discovery
  * key and secrets management
  * module / assembly (library) / application versioning
- *
+ * penetration testing / fuzzing
+ * scale up / scale out
 
 
  ## Talk topics
@@ -127,6 +128,10 @@ With respect to software development and deployment, these features are also val
  * tracking versions, understanding dependencies, it's kind of an open question / issue
 * supportable [TODO get rid of the "able's"]
 * testable [TODO ditto]
+* secure
+* functions as designed; delights users
+* alarms or notifications have enough info to decide how quickly you need to respond
+*
 
 
 ### Broadening the notion of SDLC
@@ -144,6 +149,8 @@ With respect to software development and deployment, these features are also val
 **NO SELF-DEPRECATION. PERIOD.**
 
 * [aside] "look at everything we didn't have to build" <-- MapBox CEO at re:Invent during Werner's keynote (so awesome)
+
+* [aside] (paraphrasing) No one gets kudos for using servers; they get kudos for serving users. <-- Twilio CEO at re:Invent during Werner's keynote (not bad, sort of clever I guess (obviously somewhat memorable))
 
 * I tend to view applications as black boxes, aside from whatever configuration is needed. I and my team need to focus on creating and maintaining source to create the cattle on which their applications will run.
 
@@ -173,3 +180,23 @@ Thankfully, this "practices gap" is closing. More services and operations staff 
  * product owner <--> (backlog owner, scrum master) // I like to think of a product owner as "customer advocate", but other approaches like eXtreme Programming actually are closer to the customer.
  * backlog owner <--> (scrum master, sprint team)
  * scrum master  <--> sprint team
+
+### [need a title: Community?]
+
+* Let's share.
+ * Sharing is caring
+ * Everyone loves to have people use their stuff
+ * Similar in my mind to the "second deployment" I mentioned earlier. (Huh?) (What I mean by that is) getting our stuff in front of other users will increase its fitness. They'll find issues we don't, based possibly on use cases. They'll make requests that we hadn't thought of. They'll contribute features we don't need and may not prioritize. Win-win! **[TODO rewrite this]**
+
+* Let's demo our work and invite everyone to come and see it
+ * For the person who's work is being demoed, you may need courage and humility
+ * For those watching the demoes, it's super important to be encouraging
+ * If you want to be critical, please keep it on the feature, **not** the presenter.
+  * **This takes practice on both sides!** It can feel like a landmine to say it, and it can feel like a personal attack to receive it.
+
+*
+
+
+### [need a title: Continuous Improvement?]
+
+* There's lots of new stuff to learn and experiment with. It will sometimes make sense to move to a new "thing". But I'd submit that changes should be ... **[TODO something about don't just change stuff because it's the new shiny.]**
