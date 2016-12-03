@@ -162,10 +162,14 @@ Thankfully, this "practices gap" is closing. More services and operations staff 
 ### Standardization
 
 * Let's identify our requirements, pilot (spike) some solutions, and then CHOOSE one of them.
+
 * Let's agree to a periodic (annual? semi-annual?) technology review. Are the tools we're using still meeting the needs of the organization?
  * Let's evolve a culture of "socializing"
+
+
 * Let's reduce "buyer's remorse" by keeping in mind that we'll review our choices, and pivot as needed **based on experience in context**.
  * At the same time, let's agree that if our preferred technology or tool didn't make the cut, that we'll do another review in the future.
+
 
 * Let's focus on the second (or third or ...) deployment. That's where you find out if you've got the right abstractions and change management features in place.
 
@@ -188,14 +192,39 @@ Thankfully, this "practices gap" is closing. More services and operations staff 
  * Everyone loves to have people use their stuff
  * Similar in my mind to the "second deployment" I mentioned earlier. (Huh?) (What I mean by that is) getting our stuff in front of other users will increase its fitness. They'll find issues we don't, based possibly on use cases. They'll make requests that we hadn't thought of. They'll contribute features we don't need and may not prioritize. Win-win! **[TODO rewrite this]**
 
+
 * Let's demo our work and invite everyone to come and see it
  * For the person who's work is being demoed, you may need courage and humility
  * For those watching the demoes, it's super important to be encouraging
  * If you want to be critical, please keep it on the feature, **not** the presenter.
   * **This takes practice on both sides!** It can feel like a landmine to say it, and it can feel like a personal attack to receive it.
 
-*
 
+* Let's keep it simple
+ * key management and the Madetech approach
+ * maybe a dead end, since keys tend to be a means of protecting things. But even cattle need to be protected from predators.
+
+
+* Let's feel the pain
+ * "If it hurts, do it more frequently, and bring the pain forward." ― Jez Humble, _Continuous Delivery: Reliable Software Releases Through Build, Test, and Deployment Automation_
+
+
+* Let's feel the fear
+ * (Jim Gaffigan voice) wow, this got dark quickly
+ * but continue anyway
+ * put yourself out of a job (at least your current role)
+ * if you're good at what you do, and can demonstrate that, you'll be fine
+
+
+* Know when to zoom in or zoom out
+ * What are you working on? Is it a command-line tool for private use? If so, you can probably get away with positional parameters, and no documentation. But if you're planning to share it, you'll probably want named parameters and at least a README or USAGE document.
+ * How about if you're processing data? Can you read the whole data set into memory, or do you need to use some kind of generator that iterates over values? Or maybe you need to go further still, and pull data from a queue.
+ * In both examples you'll need to think about solutions that match the problem you're trying to solve. But there's another area where I think zooming in or out is more important.
+ * But, like so much of this part of my talk, where zooming in or out is more important is with people. Are you writing some application that's going to production at some point? Are you keeping the operations team up to date with what you're working on, and what you'll need from them in order to properly support it? Have you shared your schema with the DBAs? Have you done a 30% demo for the product owner yet?
+ * Going further, ~~have you considered how this new piece will interact with existing pieces?~~
+
+
+* Remember the words of the gentle painter and all around good guy, Bob Ross
 
 ### [need a title: Continuous Improvement?]
 
