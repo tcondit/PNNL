@@ -178,6 +178,13 @@ Thankfully, this "practices gap" is closing. More services and operations staff 
 
 * 12-factor app
 
+* Let's think about having decision making frameworks. This is a big area, but one that I think is potentially valuable if the team is bought in. For example, you may be deciding on a tool (or a couple finalists) to do your deployments. Or maybe you're deciding on a riding lawn mower purchase. On some level, they're similar. I tend to start by trying to identify "must-haves" [1], and filter my candidates against those first. The second stage is identifying other features ("nice-to-haves" [2]) and evaluating the candidates against those. It's not super helpful to weight them in my experience. It should become clear pretty quickly that
+
+[1] hard functional requirements (AKA must-haves) could include things like compatibility with existing infrastructure or platforms (OS); developer familiarity with the implementation language (or this might be nice-to-have instead -- it's good to keep learning!);
+
+[2] soft functional requirements (AKA nice-to-haves) could include things like ...
+
+
 ### Agile
 
 * It's all about communication.
