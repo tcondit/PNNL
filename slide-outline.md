@@ -49,9 +49,55 @@ Slides with slides.com or reveal.js
    * default gateway (internet gateway)
  * </aside>
  * I'm not going to stand up all of this today (what a cop out!)
+ * TODO image (HashiConf?)
 
 
 * Terraform (HashiCorp)
  * Allows you to create a stack (like the example given above)
- * Creates 
+ * Creates infrastructure using their DSL (HCL)
+ * Multiple providers: AWS, Azure, Vagrant, others
+  * [providers](https://www.terraform.io/docs/providers/index.html)
+ * Preview changes before applying
+ * Dynamic data collection
+  * TODO screenshot of plan
+ * Reproducible infrastructure with states files
 
+* The big deal about Terraform
+ * Efficiency, reuse
+  * Share your infrastructure as code
+  * Federate your servers if you want
+ * Visibility
+  * `terraform plan` will show you what it's going to do
+ * Safety (confidence)
+  * `terraform plan` will tell you if things have changed
+  * TODO show example of creating stack, changing manually, then running plan/apply to scan/reset
+
+* Writing Terraform configuration
+ * main.tf
+ * variables.tf
+ * outputs.tf
+ * (save these to version control)
+
+* DEMO
+ * Walk thru code
+
+* Generated states files
+ * Terraform's source of record
+ * Saves the state of your provisioned stack
+ * Manages drift
+ * Destroy stacks
+ * Dynamically updated as your stack is evolved
+ * (save these to durable storage somewhere)
+
+* DEMO - Create a simple stack
+ * Create a stack pair
+ * Show, copy the tfstack file
+  * Better still, create a git repo, add it NOW (need it in a minute)
+  * No .gitignore
+ * Update the config to create 10 build machines, run again
+  * Super easy to ramp up, in a manageable way
+  * git diff tfstate file
+ * Main reason I'd recommend against storing these files in version control:
+  * Resources are dynamic, states files are static
+
+* DEMO - 
