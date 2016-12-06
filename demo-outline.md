@@ -121,6 +121,13 @@ For a bit more, you'll want to add data center or regional replication.
  1. would have to include VPC peering
 1. what else?
 
+We're not going to do almost any of this today. (Image with a big red circle
+and bar?) Instead, we'll create two small stacks, one to do builds on and
+deploy from, and one to deploy to.
+
+(walkthru and demo: pair of instances, Terraform)
+
+
 ### Ansible (10 min)
 
 1. 
@@ -130,3 +137,4 @@ For a bit more, you'll want to add data center or regional replication.
 1. 
 
 ### Put it all together (5 min)
+
