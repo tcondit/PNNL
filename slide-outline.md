@@ -9,6 +9,9 @@ Slides with slides.com or reveal.js
 * Who am I?
  * Tim Condit, candidate for the Continuous Delivery Engineer role
  * I've been doing builds, (software) configuration management and automation for about 11 years
+ * Co-organizer, Seattle Jenkins Area Meetup (JAM)
+ * AWS Certified Developer - Associate
+ * One of the lucky ones
 
 
 * Agile and DevOps
@@ -32,8 +35,23 @@ Slides with slides.com or reveal.js
   * (stack) configuration management (CM)
   * continuous integration (CI)
   * continuous delivery (CD)
-* The tools I'll describe and demo today all share these features
+ * The tools I'll describe and demo today all share these features
+
+* <aside>Stack Description
+ * Here's a reasonable base stack with minimal security (AWS naming conventions)
+   * a private network (virtual public cloud)
+   * virtual machines (EC2 instances)
+   * publicly routeable IP address (elastic IP)
+    * if needed, may have a public IP address
+   * firewall rules (security groups)
+   * subnets
+   * routes
+   * default gateway (internet gateway)
+ * </aside>
+ * I'm not going to stand up all of this today (what a cop out!)
 
 
-* Terraform
+* Terraform (HashiCorp)
+ * Allows you to create a stack (like the example given above)
+ * Creates 
 
