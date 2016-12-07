@@ -9,24 +9,32 @@ Slides with slides.com or reveal.js
 * Who am I?
  * Tim Condit, candidate for the Continuous Delivery Engineer role
  * I've been doing builds, (software) configuration management and automation for about 11 years
- * Co-organizer, Seattle Jenkins Area Meetup (JAM)
  * AWS Certified Developer - Associate
+ * Co-organizer, Seattle Jenkins Area Meetup (JAM)
  * One of the lucky ones
 
 
-* Agile and DevOps
- * Agile is ultimately about relevant communication, or "getting to the ground truth"
-  * What's that mean? I'm 
-
- * DevOps sort of feels like "the next phase" of Agile
- * What else is 
- * Sofware configuration management (particularly along with pull requests and code reviews!) is 
- [IMG]
- * One of the Continuous integration is absolutely 
- * CD is certainly 
+[? ditch this ? Seems off-topic ]
+* Agile
+ * Agile is about shipping the right features at the right time
+  * Among other things, that depends on
+   * active prioritization
+   * timely and accurate communication
+   * identifying and resolving roadblocks
 
 
-  effort and getting to the ground truth, SCM, CI/CD and 
+[? ditch this ? Seems off-topic ]
+* DevOps
+ * DevOps feels like "the next phase" of agile
+ * Both rely on external artifacts
+  * backlogs, story boards, burn down charts
+  * version control, infrastructure as source code
+ * Both have established or evolving practices
+  * poker planning, commitments, daily stand ups, sprint acceptance meetings
+  * code reviews, frequent integrations, automated testing, (potentially) continuous deployment, production support
+ * Both bring development teams together with stakeholders
+  * product owners
+  * operations
 
 
 * Text Configuration + Version Control = <3 reviewable release process
@@ -37,7 +45,21 @@ Slides with slides.com or reveal.js
   * continuous delivery (CD)
  * The tools I'll describe and demo today all share these features
 
-* <aside>Stack Description
+
+* Terraform (HashiCorp)
+ * TODO image (Terraform logo)
+ * Allows you to create a stack (like the example given above)
+ * Creates infrastructure using their DSL (HCL)
+ * Multiple providers: AWS, Azure, Vagrant, OpenStack, others
+  * [providers](https://www.terraform.io/docs/providers/index.html)
+  * I've heard you can even combine resources from multiple providers (haven't tried it)
+ * Preview changes before applying
+ * Dynamic data collection
+  * TODO screenshot of plan
+ * Reproducible infrastructure with states files
+
+
+* Stack Description
  * Here's a reasonable base stack with minimal security (AWS naming conventions)
    * a private network (virtual public cloud)
    * virtual machines (EC2 instances)
@@ -47,30 +69,23 @@ Slides with slides.com or reveal.js
    * subnets
    * routes
    * default gateway (internet gateway)
- * </aside>
  * I'm not going to stand up all of this today (what a cop out!)
  * TODO image (HashiConf?)
 
 
-* Terraform (HashiCorp)
- * Allows you to create a stack (like the example given above)
- * Creates infrastructure using their DSL (HCL)
- * Multiple providers: AWS, Azure, Vagrant, others
-  * [providers](https://www.terraform.io/docs/providers/index.html)
- * Preview changes before applying
- * Dynamic data collection
-  * TODO screenshot of plan
- * Reproducible infrastructure with states files
-
 * The big deal about Terraform
- * Efficiency, reuse
-  * Share your infrastructure as code
-  * Federate your servers if you want
- * Visibility
-  * `terraform plan` will show you what it's going to do
- * Safety (confidence)
-  * `terraform plan` will tell you if things have changed
-  * TODO show example of creating stack, changing manually, then running plan/apply to scan/reset
+ * I mentioned some features earlier
+  * (create stacks; multiple providers; preview changes; reproducible)
+ * Those translate into benefits:
+  * Efficiency, reuse
+   * Share your infrastructure as code
+   * Federate your servers if you want
+  * Visibility
+   * `terraform plan` will show you what it's going to do
+  * Safety (confidence)
+   * `terraform plan` will tell you if things have changed
+   * TODO show example of creating stack, changing manually, then running plan/apply to scan/reset
+
 
 * Writing Terraform configuration
  * main.tf
@@ -78,8 +93,10 @@ Slides with slides.com or reveal.js
  * outputs.tf
  * (save these to version control)
 
+
 * DEMO
  * Walk thru code
+
 
 * Generated states files
  * Terraform's source of record
@@ -88,6 +105,7 @@ Slides with slides.com or reveal.js
  * Destroy stacks
  * Dynamically updated as your stack is evolved
  * (save these to durable storage somewhere)
+
 
 * DEMO - Create a simple stack
  * Create a stack pair
