@@ -185,7 +185,7 @@ Thankfully, this "practices gap" is closing. More services and operations staff 
 [2] soft functional requirements (AKA nice-to-haves) could include things like ...
 
 
-### Agile
+## Agile
 
 * It's all about communication.
  * product owner <--> (backlog owner, scrum master) // I like to think of a product owner as "customer advocate", but other approaches like eXtreme Programming actually are closer to the customer.
