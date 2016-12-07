@@ -1,4 +1,4 @@
-# aws-stack-0-minimal
+# aws-terraform-ansible-jenkins
 Minimal AWS stack. Created with Terraform, with Jenkins provisioning by Ansible.
 
 ## Prerequisites
