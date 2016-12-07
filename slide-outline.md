@@ -4,7 +4,7 @@ Slides with slides.com or reveal.js
 
 ## Title: Tools for Stack Management
 
-## Intro
+### Intro
 
 * Who am I?
  * Tim Condit, candidate for the Continuous Delivery Engineer role
@@ -14,16 +14,6 @@ Slides with slides.com or reveal.js
  * One of the lucky ones
 
 
-[? ditch this ? Seems off-topic ]
-* Agile
- * Agile is about shipping the right features at the right time
-  * Among other things, that depends on
-   * active prioritization
-   * timely and accurate communication
-   * identifying and resolving roadblocks
-
-
-[? ditch this ? Seems off-topic ]
 * DevOps
  * DevOps feels like "the next phase" of agile
  * Both rely on external artifacts
@@ -35,6 +25,9 @@ Slides with slides.com or reveal.js
  * Both bring development teams together with stakeholders
   * product owners
   * operations
+ * Both rely on fast feedback
+ * Really, both are about creating high-functioning, cohesive teams
+  * But DevOps (correctly, IMO) encourages a more holistic view of the team
 
 
 * Text Configuration + Version Control = <3 reviewable release process
@@ -45,6 +38,8 @@ Slides with slides.com or reveal.js
   * continuous delivery (CD)
  * The tools I'll describe and demo today all share these features
 
+
+### Terraform
 
 * Terraform (HashiCorp)
  * TODO image (Terraform logo)
@@ -60,23 +55,22 @@ Slides with slides.com or reveal.js
 
 
 * Stack Description
- * Here's a reasonable base stack with minimal security (AWS naming conventions)
+ * Here's a base stack with minimal security, and no failover/HA (AWS names)
    * a private network (virtual public cloud)
    * virtual machines (EC2 instances)
    * publicly routeable IP address (elastic IP)
-    * if needed, may have a public IP address
+    * if needed, instances may have public IP addresses
    * firewall rules (security groups)
    * subnets
    * routes
    * default gateway (internet gateway)
- * I'm not going to stand up all of this today (what a cop out!)
- * TODO image (HashiConf?)
+ * Between a default VPC and Terraform, we'll get most of this "for free"
 
 
 * The big deal about Terraform
  * I mentioned some features earlier
   * (create stacks; multiple providers; preview changes; reproducible)
- * Those translate into benefits:
+ * Features translate to benefits
   * Efficiency, reuse
    * Share your infrastructure as code
    * Federate your servers if you want
@@ -85,26 +79,20 @@ Slides with slides.com or reveal.js
   * Safety (confidence)
    * `terraform plan` will tell you if things have changed
    * TODO show example of creating stack, changing manually, then running plan/apply to scan/reset
+   * `terraform apply` will reset your configuration to a known state
 
 
 * Writing Terraform configuration
  * main.tf
  * variables.tf
  * outputs.tf
+ * terraform.tfvars
  * (save these to version control)
 
 
-* DEMO
- * Walk thru code
-
-
-* Generated states files
- * Terraform's source of record
- * Saves the state of your provisioned stack
- * Manages drift
- * Destroy stacks
- * Dynamically updated as your stack is evolved
- * (save these to durable storage somewhere)
+* Talk thru
+ * (four files, four slides)
+ * blur out my secret key and access key values
 
 
 * DEMO - Create a simple stack
@@ -118,4 +106,38 @@ Slides with slides.com or reveal.js
  * Main reason I'd recommend against storing these files in version control:
   * Resources are dynamic, states files are static
 
-* DEMO - 
+
+DEMO 1 STEPS
+
+1. Show empty AWS instances
+1. `cd ~/pnnl-talk/demo`
+1. Show, mention four files + terraform.tfstate
+ 1. Yes, it's checked in :)
+1. `tf plan`
+1. `tf apply`
+1. `tf show`
+ 1. Pulls data from tfstate file
+1. `git status`, `git diff` # show state files
+ 1. Not going to check in the change
+ 1. Should see the value of "serial"
+1. Add tags or names to one or both.
+1. `tf plan`
+ 1. Should see plan to remove the names.
+1. `tf destroy`
+1. `git status`, `git diff` # show state files
+ 1. Should see only "serial" incremented (twice: once on apply, once on destroy)
+
+Bump it up (dry run)
+
+1. `aws_instance.build_server.count=100` (main.tf)
+1. `tf plan`
+1. `aws_instance.build_server.count=1`
+
+Back to AWS console, need two instances running for later.
+
+1. `tf apply`
+1. `tf output` # we'll need this later
+
+
+### Ansible
+
