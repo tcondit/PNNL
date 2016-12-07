@@ -12,6 +12,8 @@ Slides with slides.com or reveal.js
  * AWS Certified Developer - Associate
  * Co-organizer, Seattle Jenkins Area Meetup (JAM)
  * One of the lucky ones
+ * Talking about server provisioning and configuration management
+  * Foundations for CI/CD
 
 
 * DevOps
@@ -139,5 +141,19 @@ Back to AWS console, need two instances running for later.
 1. `tf output` # we'll need this later
 
 
+
 ### Ansible
+
+* Ansible (RedHat)
+ * TODO image (Ansible logo)
+ * Allows you to get a new stack ready for use
+ * Infrastructure configuration mostly YAML
+ * The "control machine" runs on several flavors of Linux, Mac, etc.
+ * The managed nodes can also run on Windows
+  * [platforms](http://docs.ansible.com/ansible/intro_installation.html#control-machine-requirements)
+
+ * Preview changes before applying
+ * Dynamic data collection
+  * TODO screenshot of plan
+ * Reproducible infrastructure with states files
 
