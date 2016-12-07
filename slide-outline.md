@@ -83,6 +83,33 @@ Slides with slides.com or reveal.js
    * TODO show example of creating stack, changing manually, then running plan/apply to scan/reset
    * `terraform apply` will reset your configuration to a known state
 
+* Terraform data/config types [docs](https://www.terraform.io/docs/index.html)
+ * providers
+  * responsible for managing the lifecycle of a resource: create, read, update, delete.
+  `provider "aws" {
+     region     = "${var.region}"
+     access_key = "${var.access_key}"
+     secret_key = "${var.secret_key}"
+  }`
+ * resources
+  * A component of your infrastructure. It might be some low level component such as a physical server, virtual machine, or container. Or it can be a higher level component such as an email provider, DNS record, or database provider.
+  `resource "aws_instance" "jenkins_master" {
+     count         = 1
+     ami           = "${lookup(var.amis, var.region)}"
+     instance_type = "t2.micro"
+     key_name      = "${var.key_name}"
+  }`
+ * variables
+  * May include defaults, but not required; may be overridden (last one wins: default -> .tfvars -> CLI)
+  `variable "access_key" {}`
+  `variable "region" {
+     default = "us-east-1"
+   }`
+ * outputs
+  * Write specific data to stdout and stash for later retrieval
+  * `tf output [parameter]`
+  * `tf show`
+
 
 * Writing Terraform configuration
  * main.tf
