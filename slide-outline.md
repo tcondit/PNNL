@@ -9,9 +9,13 @@ Slides with slides.com or reveal.js
 * Who am I?
  * Tim Condit, candidate for the Continuous Delivery Engineer role
  * I've been doing builds, (software) configuration management and automation for about 11 years
+  * Other stuff before that, including wide area networking, teaching Linux administration and Java
  * AWS Certified Developer - Associate
  * Co-organizer, Seattle Jenkins Area Meetup (JAM)
  * One of the lucky ones
+
+
+[ !! TODO Swap this out for a quick chat about not flashy, not particularly clever, but useful and a firm foundation upon which to build. ]
  * Talking about server provisioning and configuration management
   * Foundations for CI/CD
 
@@ -27,6 +31,10 @@ Slides with slides.com or reveal.js
  * Both bring development teams together with stakeholders
   * product owners
   * operations
+ * == OR ==
+ * Both formalize the stakeholder roles
+  * developers, QA, scrum master, product owner, backlog owner
+  * developers, QA, Operations
  * Both rely on fast feedback
  * Really, both are about creating high-functioning, cohesive teams
   * But DevOps (correctly, IMO) encourages a more holistic view of the team
@@ -54,19 +62,6 @@ Slides with slides.com or reveal.js
  * Dynamic data collection
   * TODO screenshot of plan
  * Reproducible infrastructure with states files
-
-
-* Stack Description
- * Here's a base stack with minimal security, and no failover/HA (AWS names)
-   * a private network (virtual public cloud)
-   * virtual machines (EC2 instances)
-   * publicly routeable IP address (elastic IP)
-    * if needed, instances may have public IP addresses
-   * firewall rules (security groups)
-   * subnets
-   * routes
-   * default gateway (internet gateway)
- * Between a default VPC and Terraform, we'll get most of this "for free"
 
 
 * The big deal about Terraform
@@ -122,6 +117,19 @@ Slides with slides.com or reveal.js
 * Talk thru
  * (four files, four slides)
  * blur out my secret key and access key values
+
+
+* Stack Description
+ * Here's a base stack with minimal security, and no failover/HA (AWS names)
+   * a private network (virtual public cloud)
+   * virtual machines (EC2 instances)
+   * publicly routeable IP address (elastic IP)
+    * if needed, instances may have public IP addresses
+   * firewall rules (security groups)
+   * subnets
+   * routes
+   * default gateway (internet gateway)
+ * Between a default VPC and Terraform, we'll get most of this "for free"
 
 
 * DEMO - Create a simple stack
