@@ -34,7 +34,7 @@ variable "amis" {
     }
 }
 
-# The key is a PEM file that you've already uploaded to AWS. Keys are
+# Refers to a PEM file that you've already uploaded to AWS. Keys are
 # per-region, so key 'fubar' in us-east-1 would show up in this list:
 #
 # https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:sort=keyName
