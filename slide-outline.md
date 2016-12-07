@@ -202,9 +202,27 @@ Back to AWS console, need two instances running for later.
  *
 
 * Similar to Terraform, it also manages configurations to a known state
- * If a run partially completes, and fails for some reason, you can re-run it after making some changes and it'll check that parts that are already complete, but not redo them.
- * Individual tasks may be idempotent, but the whole playbook is really not, IMO. It could leave your system in an incomplete state.
+ * We use Chef for configuration management and deployments at Capital One Investing. This has always bothered me, because Chef's prime directive, as far as I can tell is to *prevent change*. Now we're forcing it to *effect change*. Convergence versus divergence. Wrong tool for the job.
+ * Ansible, as an execution engine, is designed to do both. Using Ansible for deployments, it "feels like" driving a state machine. Okay, this is my current state. I'll maintain it *here*. Okay, this is my new state. Now I'll maintain it *here*.
+ * If a run partially completes, and fails for some reason, you can re-run it after making some changes and it'll check that parts that are already complete, and not redo them.
+ * Caveat: The reporting is not always super accurate. It'll sometimes say it's changing something when really it's just checking it (as far as I can tell).
+ * Caveat: Individual tasks may be idempotent, but the whole playbook is not, IMO. It could leave your system in an incomplete state.
 
+* PICK UP HERE
+ * show Jenkins running
+ * ad hoc command to stop the service on jenkins_master
+  * show it's stopped
+  * restart it
+  * explain that the control machine acts as an administrative proxy, helping us get closer to immutable infrastructure
+   * link to 12 factor app?
+ * anyone see a problem with this configuration? Hint, it's a logical issue, not syntax
+  * starting two masters, no slaves
+ * simple things should be easy!
+  * simpler to distribute to the teams
+  * certainly easier to reason about from a functional point of view, as long as the roles you pull in are properly bound
+   * explain?
+  * what constitutes a simple thing keeps getting more complex (which is a good thing)
+  *
 
 * Commands
  * ansible
@@ -239,7 +257,7 @@ DEMO 2 STEPS
 * There's lots more to learn and share
 
 * Terraform
- * The Graph function
+ * Terraform's graphing function
  * Using with Vagrant or other providers
  * Using modules (and def. not creating modules)
  * Details about the HashiCorp Configuration Language (HCL)
