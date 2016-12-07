@@ -1,11 +1,10 @@
-# https://github.com/hashicorp/terraform/blob/master/.gitignore
-*.dll
-*.exe
-.DS_Store
-example.tf
-terraform.tfplan
-terraform.tfstate
+#terraform.tfplan
+#terraform.tfstate
 terraform.tfvars
+*.tfstate
+*.backup
+.terraform/
+
 bin/
 modules-dev/
 /pkg/
@@ -13,10 +12,9 @@ website/.vagrant
 website/.bundle
 website/build
 website/node_modules
+website/vendor
+
 .vagrant/
-*.backup
-./*.tfstate
-.terraform/
 *.log
 *.bak
 *~
@@ -25,5 +23,7 @@ website/node_modules
 *.iml
 *.test
 *.iml
+*.dll
+*.exe
+.DS_Store
 
-website/vendor
