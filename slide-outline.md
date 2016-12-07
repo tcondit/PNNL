@@ -146,14 +146,71 @@ Back to AWS console, need two instances running for later.
 
 * Ansible (RedHat)
  * TODO image (Ansible logo)
- * Allows you to get a new stack ready for use
+ * Gets a new stack ready for use
  * Infrastructure configuration mostly YAML
  * The "control machine" runs on several flavors of Linux, Mac, etc.
  * The managed nodes can also run on Windows
   * [platforms](http://docs.ansible.com/ansible/intro_installation.html#control-machine-requirements)
+ * Community code called roles available from [Ansible Galaxy](https://galaxy.ansible.com/)
 
- * Preview changes before applying
- * Dynamic data collection
-  * TODO screenshot of plan
- * Reproducible infrastructure with states files
+* Ansible data/config types [docs](http://docs.ansible.com/ansible/index.html)
+ * playbooks
+  * At its core, Ansible is not so much a configuration management tool as an execution engine. The docs say "playbooks can declare configurations, but they can also orchestrate steps of any manual ordered process".
+  * We'll see an example in a minute.
+ * roles
+  *
+ * modules
+  * Control system resources, like services, packages, or files (anything really), or handle executing system commands. Typically these are called from within playbooks, but they can also be run at the command line.
+  * Examples are `ping`, `apt`, `pip`, `git`, etc.
 
+* The inventory file
+ *
+
+* Similar to Terraform, it also manages configurations to a known state
+ * If a run partially completes, and fails for some reason, you can re-run it after making some changes and it'll check that parts that are already complete, but not redo them.
+ * Individual tasks may be idempotent, but the whole playbook is really not, IMO. It could leave your system in an incomplete state.
+
+
+* Commands
+ * ansible
+ * ansible-playbook
+ * ansible-galaxy
+
+* Roles
+ * Stored at /etc/ansible/roles
+ * Fetch from Galaxy with `ansible-galaxy`
+
+ * Ad hoc command example
+  * With and without /etc/ansible/hosts
+  * Uses the pubic IPs from Terraform
+
+DEMO 2 STEPS
+
+* TODO
+
+* Bare minimum playbook
+ * Thanks to reusable roles, it's almost nothing, just a playbook and a requirements file
+ * Show files
+
+`ansible-galaxy install -r requirements`
+`ansible -m <module> ...`
+
+*
+
+
+
+### Some things not covered here
+
+* There's lots more to learn and share
+
+* Terraform
+ * The Graph function
+ * Using with Vagrant or other providers
+ * Using modules (and def. not creating modules)
+ * Details about the HashiCorp Configuration Language (HCL)
+
+* Ansible
+ * The playbook debugger
+ * Using the Vault
+ * Ansible Tower (of which I know almost nothing)
+ * Writing and publishing a role
