@@ -23,18 +23,5 @@ resource "aws_instance" "build_server" {
     ami            = "${lookup(var.amis, var.region)}"
     instance_type  = "t2.micro"
     key_name       = "${var.key_name}"
-
-#    provisioner "ansible" {
-#        connection {
-#            user = "ubuntu"
-#        }
-#
-#        playbook = "ansible/playbook.yml"
-#        groups = [ "all" ]
-#        hosts = [ "terraform" ]
-#        extra_vars = {
-#            "env" = "terraform"  
-#        }
-#    }
 }
 
