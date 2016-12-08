@@ -10,10 +10,9 @@
 #
 # access_key = "your-access-key"
 # secret_key = "your-secret-key"
-#
+
 variable "access_key" {}
 variable "secret_key" {}
-
 variable "region" {
     default = "us-east-1"
 }
@@ -25,7 +24,7 @@ variable "region" {
 # https://cloud-images.ubuntu.com/locator/daily/
 # ami-bcfac8ab = { us-east-1; xenial; amd64; hvm-ssd; 20161125 }
 # ami-73208f13 = { us-west-2; xenial; amd64; hvm-ssd; 20161125 }
-#
+
 variable "amis" {
     type = "map"
     default = {
@@ -38,7 +37,7 @@ variable "amis" {
 # per-region, so key 'fubar' in us-east-1 would show up in this list:
 #
 # https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#KeyPairs:sort=keyName
-#
+
 variable "key_name" {
     description = "Name of the SSK key pair to use in AWS"
     default = "hashicorp_2016_11"
