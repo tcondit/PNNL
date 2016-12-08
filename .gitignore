@@ -5,6 +5,8 @@ terraform.tfvars
 *.backup
 .terraform/
 
+*.retry
+
 bin/
 modules-dev/
 /pkg/
