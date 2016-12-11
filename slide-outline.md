@@ -16,7 +16,7 @@ Slides with slides.com or reveal.js
 
 
 [ !! TODO Swap this out for a quick chat about not flashy, not particularly clever, but useful and a firm foundation upon which to build. ]
- * Talking about server provisioning and configuration management
+ * Talking about stack provisioning and configuration management
   * Foundations for CI/CD
 
 
@@ -53,15 +53,17 @@ Slides with slides.com or reveal.js
 
 * Terraform (HashiCorp)
  * TODO image (Terraform logo)
- * Allows you to create a stack (like the example given above)
+ * Allows you to create a stack
  * Creates infrastructure using their DSL (HCL)
  * Multiple providers: AWS, Azure, Vagrant, OpenStack, others
+  * Different resources for each provider
   * [providers](https://www.terraform.io/docs/providers/index.html)
   * I've heard you can even combine resources from multiple providers (haven't tried it)
  * Preview changes before applying
  * Dynamic data collection
   * TODO screenshot of plan
  * Reproducible infrastructure with states files
+ * Option to run a provisioner during creation
 
 
 * The big deal about Terraform
@@ -75,12 +77,12 @@ Slides with slides.com or reveal.js
    * `terraform plan` will show you what it's going to do
   * Safety (confidence)
    * `terraform plan` will tell you if things have changed
-   * TODO show example of creating stack, changing manually, then running plan/apply to scan/reset
    * `terraform apply` will reset your configuration to a known state
+
 
 * Terraform data/config types [docs](https://www.terraform.io/docs/index.html)
  * providers
-  * responsible for managing the lifecycle of a resource: create, read, update, delete.
+  * Responsible for managing the lifecycle of a resource: create, read, update, delete.
   `provider "aws" {
      region     = "${var.region}"
      access_key = "${var.access_key}"
@@ -102,8 +104,8 @@ Slides with slides.com or reveal.js
    }`
  * outputs
   * Write specific data to stdout and stash for later retrieval
-  * `tf output [parameter]`
-  * `tf show`
+  * `terraform output [parameter]`
+  * `terraform show`
 
 
 * Writing Terraform configuration
@@ -116,14 +118,16 @@ Slides with slides.com or reveal.js
 
 * Talk thru
  * (four files, four slides)
+ * configuration intentionally kept very simple, while still demonstrating the tools' benefits
+  * both tools allow you to do a lot with a little
  * blur out my secret key and access key values
 
 
 * Stack Description
- * Here's a base stack with minimal security, and no failover/HA (AWS names)
+ * Base stack, minimal security and resilience
    * a private network (virtual public cloud)
    * virtual machines (EC2 instances)
-   * publicly routeable IP address (elastic IP)
+   * publicly routable IP address (elastic IP)
     * if needed, instances may have public IP addresses
    * firewall rules (security groups)
    * subnets
@@ -140,8 +144,9 @@ Slides with slides.com or reveal.js
  * Update the config to create 10 build machines, run again
   * Super easy to ramp up, in a manageable way
   * git diff tfstate file
- * Main reason I'd recommend against storing these files in version control:
-  * Resources are dynamic, states files are static
+
+* Main reason I'd recommend against storing these files in version control:
+ * Resources are dynamic, states files are static
 
 
 DEMO 1 STEPS
@@ -150,30 +155,30 @@ DEMO 1 STEPS
 1. `cd ~/pnnl-talk/demo`
 1. Show, mention four files + terraform.tfstate
  1. Yes, it's checked in :)
-1. `tf plan`
-1. `tf apply`
-1. `tf show`
+1. `terraform plan`
+1. `terraform apply`
+1. `terraform show`
  1. Pulls data from tfstate file
 1. `git status`, `git diff` # show state files
  1. Not going to check in the change
  1. Should see the value of "serial"
 1. Add tags or names to one or both.
-1. `tf plan`
+1. `terraform plan`
  1. Should see plan to remove the names.
-1. `tf destroy`
+1. `terraform destroy`
 1. `git status`, `git diff` # show state files
  1. Should see only "serial" incremented (twice: once on apply, once on destroy)
 
 Bump it up (dry run)
 
 1. `aws_instance.build_server.count=100` (main.tf)
-1. `tf plan`
+1. `terraform plan`
 1. `aws_instance.build_server.count=1`
 
 Back to AWS console, need two instances running for later.
 
-1. `tf apply`
-1. `tf output` # we'll need this later
+1. `terraform apply`
+1. `terraform output` # we'll need this later
 
 
 
@@ -182,15 +187,15 @@ Back to AWS console, need two instances running for later.
 * Ansible (RedHat)
  * TODO image (Ansible logo)
  * Gets a new stack ready for use
- * Infrastructure configuration mostly YAML
- * The "control machine" runs on several flavors of Linux, Mac, etc.
+ * Configuration mostly YAML
+ * Python. The "control machine" runs on several flavors of Linux, Mac, etc.
  * The managed nodes can also run on Windows
   * [platforms](http://docs.ansible.com/ansible/intro_installation.html#control-machine-requirements)
  * Community code called roles available from [Ansible Galaxy](https://galaxy.ansible.com/)
 
 * Ansible data/config types [docs](http://docs.ansible.com/ansible/index.html)
  * playbooks
-  * At its core, Ansible is not so much a configuration management tool as an execution engine. The docs say "playbooks can declare configurations, but they can also orchestrate steps of any manual ordered process".
+  * At it's core, Ansible is really an execution engine. The docs say "playbooks can declare configurations, but they can also orchestrate steps of any manual ordered process".
   * We'll see an example in a minute.
  * roles
   *
@@ -201,7 +206,7 @@ Back to AWS console, need two instances running for later.
 * The inventory file
  *
 
-* Similar to Terraform, it also manages configurations to a known state
+* Similar to Terraform (some shared philosophy), it also manages configurations to a known state
  * We use Chef for configuration management and deployments at Capital One Investing. This has always bothered me, because Chef's prime directive, as far as I can tell is to *prevent change*. Now we're forcing it to *effect change*. Convergence versus divergence. Wrong tool for the job.
  * Ansible, as an execution engine, is designed to do both. Using Ansible for deployments, it "feels like" driving a state machine. Okay, this is my current state. I'll maintain it *here*. Okay, this is my new state. Now I'll maintain it *here*.
  * If a run partially completes, and fails for some reason, you can re-run it after making some changes and it'll check that parts that are already complete, and not redo them.
@@ -219,8 +224,7 @@ Back to AWS console, need two instances running for later.
   * starting two masters, no slaves
  * simple things should be easy!
   * simpler to distribute to the teams
-  * certainly easier to reason about from a functional point of view, as long as the roles you pull in are properly bound
-   * explain?
+  * certainly easier to reason about from a functional point of view, as long as you understand the behavior of the roles you use
   * what constitutes a simple thing keeps getting more complex (which is a good thing)
   *
 
@@ -234,6 +238,7 @@ Back to AWS console, need two instances running for later.
  * Fetch from Galaxy with `ansible-galaxy`
 
  * Ad hoc command example
+  * `ansible all -m ping`
   * With and without /etc/ansible/hosts
   * Uses the pubic IPs from Terraform
 
@@ -245,11 +250,23 @@ DEMO 2 STEPS
  * Thanks to reusable roles, it's almost nothing, just a playbook and a requirements file
  * Show files
 
-`ansible-galaxy install -r requirements`
+`ansible-galaxy install -r requirements.yml`
 `ansible -m <module> ...`
 
 *
 
+
+DEMO 3 STEPS
+
+* Show error when trying to install without roles present
+ * Poor syntax error, just have to know what it's telling you
+ * (I may dig into the code, and poke around, maybe submit a PR)
+* Show how to install the requirements
+ *
+
+* What's the actual resolution with the SSH problem I ran into? It seemed to go away after SSH'ing to one of the boxes (weird).
+
+* What to do about gather_facts? Maybe I can move it (=no) into a pre-task and add it a second time (=yes) in a post-task.
 
 
 ### Some things not covered here
