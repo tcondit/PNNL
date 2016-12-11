@@ -90,4 +90,5 @@ core to DevOps
 
 * "giver" <- Paul Reichlin
 * "unreasonable expectations" <- David J. Miller
+* "stoic", other comments <- Greg Myers (coach)
 
