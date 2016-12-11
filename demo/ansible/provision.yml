@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: no      # NB: depends on Python2, which is not yet present
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python-simplejson
+    - name: 'gather facts'
+      action: setup
+
+  vars:
+    firewall_allowed_tcp_ports:
+      - "22"
+      - "8080"
+  #    jenkins_plugins:
+  #    - ansicolor
+
+  roles:
+    - geerlingguy.firewall
+    - geerlingguy.ansible
+    - geerlingguy.java
+    - geerlingguy.jenkins
